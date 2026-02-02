@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HR Management System</title>
+</head>
+<body>
+
+    <table width="100%" border="0">
+        <tr>
+            <td>
+                <strong>HR Management</strong> &nbsp;&nbsp; Home &nbsp;&nbsp; Contact
+            </td>
+            <td align="right">
+                <input type="text" placeholder="Search...">
+                <input type="submit" value="Search">
+            </td>
+        </tr>
+    </table>
+
+    <hr> <table width="100%" border="0">
+        <tr>
+            <td><h1>Employee</h1></td>
+            <td align="right">
+                <button>+ Add</button>
+            </td>
+        </tr>
+    </table>
+
+    <table border="1" width="100%" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody align="center">
+            <tr>
+                <td>1</td>
+                <td>Fatima Beatriz</td>
+                <td>Fatima Beatriz@gmail.com</td>
+                <td>0985674321</td>
+                <td>Staff</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Gabriel Hanna</td>
+                <td>Gabriel Hanna@gmail.com</td>
+                <td>0353674231</td>
+                <td>Staff</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Charles Diya</td>
+                <td>Charles Diya@gmail.com</td>
+                <td>0347658833</td>
+                <td>Staff</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Frank Lamdo</td>
+                <td>Frank Lamdo@gmail.com</td>
+                <td>0975444768</td>
+                <td>Manager</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Louis Tom</td>
+                <td>Louis Tom@gmail.com</td>
+                <td>0789568223</td>
+                <td>Staff</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<br><br>
+    <hr>
+    
+    <h3>New Employee</h3>
+    <form>
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>
+                    <label>Name</label><br>
+                    <input type="text" size="30">
+                </td>
+                <td>
+                    <label>Email</label><br>
+                    <input type="email" size="30">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Phone</label><br>
+                    <input type="text" size="30">
+                </td>
+                <td>
+                    <label>Position</label><br>
+                    <select style="width: 230px;">
+                        <option>-- Select Position --</option>
+                        <option>Staff</option>
+                        <option>Manager</option>
+                        <option>CEO</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label>Sex</label><br>
+                    <input type="radio" name="gender"> Male
+                    <input type="radio" name="gender"> Female
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <br>
+                    <input type="submit" value="Save">
+                    <input type="reset" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
