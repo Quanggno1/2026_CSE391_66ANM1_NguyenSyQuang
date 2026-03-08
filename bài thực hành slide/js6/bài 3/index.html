@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifying Elements Practice</title>
+</head>
+<body>
+
+    <h1 id="main-heading">Tiêu đề ban đầu</h1>
+    
+    <div id="container">
+        </div>
+
+    <ul id="my-list">
+        <li>Mục lục 1</li>
+    </ul>
+
+    <script src="main.js"></script>
+
+    <img id="my-avatar" src="old-image.jpg" alt="Ảnh cũ" width="150">
+
+<div id="status-box" class="box">Hộp trạng thái</div>
+
+<button onclick="toggleHighlight()">Bật/Tắt Highlight</button>
+
+<style>
+    .highlight { background-color: yellow; font-weight: bold; border: 2px solid orange; }
+    .dark-mode { background-color: #333; color: white; }
+</style>
+<button id="main-btn">Tương tác với tôi!</button>
+
+<div id="display-box" style="width: 250px; height: 100px; border: 1px solid #ccc; margin-top: 20px; padding: 15px; transition: 0.3s;">
+    Rê chuột hoặc Click nút để xem kết quả
+</div>
+
+<style>
+    .bg-active { background-color: #ffeb3b; color: #333; }
+    .box-highlight { border: 2px dashed #f44336 !important; transform: scale(1.05); }
+</style>
+</body>
+</html>
