@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành Async/Await & Fetch</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .user-card { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border-radius: 8px; 
+            background-color: #f9f9f9;
+        }
+        .user-card h3 { margin-top: 0; color: #333; }
+        button { padding: 10px 15px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px;}
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Danh sách Người Dùng (Từ API)</h1>
+    <button id="fetch-btn">Tải Dữ Liệu Ngay</button>
+    
+    <div id="user-container" style="margin-top: 20px;">
+        <p>Nhấn nút để lấy dữ liệu...</p>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

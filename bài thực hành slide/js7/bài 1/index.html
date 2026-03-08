@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành Events chuyên sâu</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        section { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #ccc; }
+        
+        #outer-div { background-color: lightblue; padding: 30px; border: 2px solid #0056b3; cursor: pointer; }
+        #inner-div { background-color: lightcoral; padding: 20px; border: 2px solid #a70000; cursor: pointer; }
+        
+        ul { background: #f4f4f4; padding: 20px 40px; }
+        li { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
+        li:hover { background-color: #e0e0e0; }
+    </style>
+</head>
+<body>
+    <h1>Thực hành - Events</h1>
+
+    <section>
+        <h3>1. Click Event Listener</h3>
+        <button id="click-btn">Nhấn vào tôi</button>
+    </section>
+
+    <section>
+        <h3>2. Keyboard Event Listener</h3>
+        <input type="text" id="key-input" placeholder="Gõ phím bất kỳ vào đây...">
+        <p>Phím bạn vừa nhấn: <strong id="key-result" style="color: red;">...</strong></p>
+    </section>
+
+    <section>
+        <h3>3. Xử lý Form Submit</h3>
+        <form id="test-form">
+            <input type="text" placeholder="Nhập dữ liệu..." required>
+            <button type="submit">Gửi đi (Sẽ không load lại trang)</button>
+        </form>
+    </section>
+
+    <section>
+        <h3>4. Event Bubbling (Sự lan truyền)</h3>
+        <div id="outer-div">
+            <strong>THẺ CHA (Outer)</strong>
+            <div id="inner-div">
+                <strong>THẺ CON (Inner)</strong> - Click vào đây và xem Console
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>5. Event Delegation</h3>
+        <ul id="item-list">
+            <li>Dòng số 1 (Click thử xem)</li>
+            <li>Dòng số 2</li>
+            <li>Dòng số 3</li>
+        </ul>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
