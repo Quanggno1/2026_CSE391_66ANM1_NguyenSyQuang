@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt Hàng Trực Tuyến</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f7f6; padding: 20px; display: flex; justify-content: center; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        h2 { text-align: center; color: #333; margin-top: 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #555; }
+        input[type="text"], input[type="number"], input[type="date"], select, textarea {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit;
+        }
+        input.error-border, select.error-border, textarea.error-border { border-color: #dc3545; background-color: #fff8f8; }
+        .error-msg { color: #dc3545; font-size: 0.85em; margin-top: 5px; display: block; min-height: 16px; }
+        .radio-group { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px; }
+        
+        .char-count { font-size: 0.85em; color: #666; text-align: right; display: block; margin-top: 2px; }
+        .char-count.text-danger { color: #dc3545; font-weight: bold; }
+        
+        .total-box { background: #e9ecef; padding: 15px; border-radius: 4px; text-align: right; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; color: #d9534f; }
+        
+        button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #218838; }
+        
+        #confirm-modal { display: none; background: #fff; padding: 20px; border-radius: 8px; border: 2px solid #007bff; text-align: left; }
+        .modal-buttons { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-cancel { background: #6c757d; }
+        .btn-cancel:hover { background: #5a6268; }
+        .btn-confirm { background: #007bff; }
+        .btn-confirm:hover { background: #0056b3; }
+        
+        #success-message { display: none; text-align: center; background: #d4edda; color: #155724; padding: 30px; border-radius: 8px; border: 1px solid #c3e6cb; }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-container">
+        <div id="form-wrapper">
+            <h2>Đơn Đặt Hàng</h2>
+            <form id="order-form" novalidate>
+                
+                <div class="form-group">
+                    <label for="product">Sản phẩm</label>
+                    <select id="product">
+                        <option value="">-- Chọn sản phẩm --</option>
+                        <option value="ao_thun">Áo Thun Nam (150.000đ)</option>
+                        <option value="quan_jean">Quần Jean (350.000đ)</option>
+                        <option value="giay_sneaker">Giày Sneaker (500.000đ)</option>
+                    </select>
+                    <span class="error-msg" id="product-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Số lượng</label>
+                    <input type="number" id="quantity" value="1" min="1" max="99">
+                    <span class="error-msg" id="quantity-error"></span>
+                </div>
+
+                <div class="total-box">
+                    Tổng tiền: <span id="total-price">0 VNĐ</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-date">Ngày giao hàng</label>
+                    <input type="date" id="delivery-date">
+                    <span class="error-msg" id="delivery-date-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Địa chỉ giao hàng</label>
+                    <input type="text" id="address" placeholder="Nhập địa chỉ chi tiết...">
+                    <span class="error-msg" id="address-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Ghi chú (Không bắt buộc)</label>
+                    <textarea id="notes" rows="3" placeholder="Giao giờ hành chính, gọi trước khi giao..."></textarea>
+                    <span class="char-count" id="char-count">0/200</span>
+                    <span class="error-msg" id="notes-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Phương thức thanh toán</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="payment" value="COD"> COD</label>
+                        <label><input type="radio" name="payment" value="Chuyển khoản"> Chuyển khoản</label>
+                        <label><input type="radio" name="payment" value="Ví điện tử"> Ví điện tử</label>
+                    </div>
+                    <span class="error-msg" id="payment-error"></span>
+                </div>
+
+                <button type="submit">Tiến hành đặt hàng</button>
+            </form>
+        </div>
+
+        <div id="confirm-modal">
+            <h3 style="margin-top: 0; color: #007bff;">Xác nhận đặt hàng?</h3>
+            <p><strong>Sản phẩm:</strong> <span id="summary-product"></span></p>
+            <p><strong>Số lượng:</strong> <span id="summary-quantity"></span></p>
+            <p><strong>Ngày giao:</strong> <span id="summary-date"></span></p>
+            <p style="font-size: 1.2em; color: #d9534f;"><strong>Tổng thanh toán: <span id="summary-total"></span></strong></p>
+            
+            <div class="modal-buttons">
+                <button type="button" class="btn-cancel" id="btn-cancel">Hủy</button>
+                <button type="button" class="btn-confirm" id="btn-confirm">Xác nhận</button>
+            </div>
+        </div>
+
+        <div id="success-message">
+            <h2>Đặt hàng thành công! 🎉</h2>
+            <p>Cảm ơn bạn. Đơn hàng sẽ được xử lý sớm nhất.</p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
